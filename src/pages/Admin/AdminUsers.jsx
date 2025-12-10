@@ -23,7 +23,7 @@ const AdminUsers = () => {
     const accessToken = localStorage.getItem("accessToken");
     try {
       const res = await axios.get(
-        `https://e-commerce-production-b93b.up.railway.app/api/v1/user/all-user`
+        `https://e-commerce-l3ci.vercel.app/api/v1/user/all-user`
       );
       if (res.data.success) {
         setUsers(res.data.users);

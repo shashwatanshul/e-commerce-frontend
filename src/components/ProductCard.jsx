@@ -19,7 +19,7 @@ const ProductCard = ({ product, loading }) => {
   const addToCart = async (productId) => {
     try {
       const res = await axios.post(
-        "https://e-commerce-production-b93b.up.railway.app/api/v1/cart/add",
+        "https://e-commerce-l3ci.vercel.app/api/v1/cart/add",
         { productId },
         {
           headers: { Authorization: `Bearer ${accessToken}` },

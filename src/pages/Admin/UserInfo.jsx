@@ -57,7 +57,7 @@ const UserInfo = () => {
       }
 
       const res = await axios.put(
-        `https://e-commerce-production-b93b.up.railway.app/api/v1/user/update/${userId}`,
+        `https://e-commerce-l3ci.vercel.app/api/v1/user/update/${userId}`,
         formData,
         {
           headers: {
@@ -89,7 +89,7 @@ const UserInfo = () => {
   const getUserDetails = async () => {
     try {
       const res = await axios.get(
-        `https://e-commerce-production-b93b.up.railway.app/api/v1/user/get-user/${userId}`
+        `https://e-commerce-l3ci.vercel.app/api/v1/user/get-user/${userId}`
       );
       if (res.data.success) {
         setUserDetails(res.data.user);

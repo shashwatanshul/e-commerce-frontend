@@ -12,7 +12,7 @@ const ShowUserOrders = () => {
   const getUserOrders = async () => {
     const accessToken = localStorage.getItem("accessToken");
     const res = await axios.get(
-      `https://e-commerce-production-b93b.up.railway.app/api/v1/orders/user-order/${params.userId}`,
+      `https://e-commerce-l3ci.vercel.app/api/v1/orders/user-order/${params.userId}`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,

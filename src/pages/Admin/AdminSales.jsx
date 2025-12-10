@@ -23,7 +23,7 @@ const AdminSales = () => {
     try {
       const token = localStorage.getItem("accessToken");
       const res = await axios.get(
-        "https://e-commerce-production-b93b.up.railway.app/api/v1/orders/sales",
+        "https://e-commerce-l3ci.vercel.app/api/v1/orders/sales",
         {
           headers: { Authorization: `Bearer ${token}` },
         }

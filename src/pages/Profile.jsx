@@ -65,7 +65,7 @@ const Profile = () => {
       }
 
       const res = await axios.put(
-        `https://e-commerce-production-b93b.up.railway.app/api/v1/user/update/${userId}`,
+        `https://e-commerce-l3ci.vercel.app/api/v1/user/update/${userId}`,
         formData,
         {
           headers: {

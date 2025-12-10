@@ -369,7 +369,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const admin = user?.role === "admin";
-  const API = "https://e-commerce-production-b93b.up.railway.app/api/v1/cart";
+  const API = "https://e-commerce-l3ci.vercel.app/api/v1/cart";
   const accessToken = localStorage.getItem("accessToken");
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

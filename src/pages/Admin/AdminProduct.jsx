@@ -103,7 +103,7 @@ const AdminProduct = () => {
 
     try {
       const res = await axios.put(
-        `https://e-commerce-production-b93b.up.railway.app/api/v1/product/update/${editProduct._id}`,
+        `https://e-commerce-l3ci.vercel.app/api/v1/product/update/${editProduct._id}`,
         formData,
         { headers: { Authorization: `Bearer ${accessToken}` } }
       );
@@ -129,7 +129,7 @@ const AdminProduct = () => {
         (product) => product._id !== productId
       );
       const res = await axios.delete(
-        `https://e-commerce-production-b93b.up.railway.app/api/v1/product/delete/${productId}`,
+        `https://e-commerce-l3ci.vercel.app/api/v1/product/delete/${productId}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

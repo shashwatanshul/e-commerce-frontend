@@ -20,7 +20,7 @@ const Cart = () => {
   const tax = subtotal * 0.05; // example 5%
   const total = subtotal + shipping + tax;
 
-  const API = "https://e-commerce-production-b93b.up.railway.app/api/v1/cart";
+  const API = "https://e-commerce-l3ci.vercel.app/api/v1/cart";
   const accessToken = localStorage.getItem("accessToken");
 
   const loadCart = async () => {

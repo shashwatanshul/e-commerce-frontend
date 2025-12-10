@@ -11,7 +11,7 @@ const AdminOrders = () => {
     const fetchOrders = async () => {
       try {
         const { data } = await axios.get(
-          "https://e-commerce-production-b93b.up.railway.app/api/v1/orders/all",
+          "https://e-commerce-l3ci.vercel.app/api/v1/orders/all",
           {
             headers: { Authorization: `Bearer ${accessToken}` },
           }

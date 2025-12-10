@@ -136,7 +136,7 @@ const AddressForm = () => {
   const handlePayment = async () => {
     try {
       const { data } = await axios.post(
-        "https://e-commerce-production-b93b.up.railway.app/api/v1/orders/create-order",
+        "https://e-commerce-l3ci.vercel.app/api/v1/orders/create-order",
         {
           products: cart?.items?.map((item) => ({
             productId: item.productId._id,
@@ -166,7 +166,7 @@ const AddressForm = () => {
           // ✅ SUCCESS payment flow
           try {
             const verifyRes = await axios.post(
-              "https://e-commerce-production-b93b.up.railway.app/api/v1/orders/verify-payment",
+              "https://e-commerce-l3ci.vercel.app/api/v1/orders/verify-payment",
               response,
               { headers: { Authorization: `Bearer ${accessToken}` } }
             );
@@ -187,7 +187,7 @@ const AddressForm = () => {
           ondismiss: async function () {
             // ❌ Handle user closing the popup
             await axios.post(
-              "https://e-commerce-production-b93b.up.railway.app/api/v1/orders/verify-payment",
+              "https://e-commerce-l3ci.vercel.app/api/v1/orders/verify-payment",
               {
                 razorpay_order_id: data.order.id,
                 paymentFailed: true,
@@ -214,7 +214,7 @@ const AddressForm = () => {
       // ❌ Listen for payment failures
       rzp.on("payment.failed", async function (response) {
         await axios.post(
-          "https://e-commerce-production-b93b.up.railway.app/api/v1/orders/verify-payment",
+          "https://e-commerce-l3ci.vercel.app/api/v1/orders/verify-payment",
           {
             razorpay_order_id: data.order.id,
             paymentFailed: true,
