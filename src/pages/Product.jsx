@@ -2,6 +2,7 @@ import FilterSidebar from '@/components/FilterSidebar';
 import ProductCard from '@/components/ProductCard';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Input } from '@/components/ui/input';
 import { setProducts } from '@/redux/productSlice';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
@@ -82,9 +83,9 @@ const Product = () => {
 
   return (
     <div className="pt-20 pb-10">
-      <div className="max-w-7xl mx-auto flex gap-7">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex gap-7">
         {/* Sidebar */}
-        <div>
+        <div className='hidden md:block'>
           <FilterSidebar
             search={search}
             setSearch={setSearch}
@@ -100,7 +101,14 @@ const Product = () => {
 
         {/* Main product section */}
         <div className="flex flex-col flex-1">
-          <div className="flex justify-end mb-4">
+          <div className="flex justify-between md:justify-end items-center mb-4 gap-4">
+            <Input 
+              type="text" 
+              placeholder="Search products..." 
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="md:hidden max-w-[200px]"
+            />
             <Select onValueChange={(value) => setSortOrder(value)}>
               <SelectTrigger className="w-[200px]">
                 <SelectValue placeholder="Sort by price" />
