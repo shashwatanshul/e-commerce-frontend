@@ -161,12 +161,6 @@ const AddressForm = () => {
         name: "Ekart",
         description: "Order Payment",
         order_id: data.order.id,
-        method: {
-          upi: true,
-          card: true,
-          netbanking: true,
-          wallet: true,
-        },
 
         handler: async function (response) {
           // ✅ SUCCESS payment flow
