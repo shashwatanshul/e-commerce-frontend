@@ -83,61 +83,71 @@ const Cart = () => {
             <div className="flex flex-col gap-5 flex-1">
               {cart?.items?.map((product, index) => {
                 return (
-                  <Card key={index} className="">
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 p-4">
-                      <div className="flex items-center gap-4 w-full sm:w-auto">
+                  <Card key={index}>
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 p-4">
+                      {/* Product Image & Info */}
+                      <div className="flex items-center gap-4 flex-1 min-w-0 w-full md:w-auto">
                         <img
-                          src={
-                            product?.productId?.productImg?.[0]?.url || userLogo
-                          }
-                          alt=""
-                          className="w-20 h-20 object-cover rounded-md"
+                          src={product?.productId?.productImg?.[0]?.url || userLogo}
+                          alt={product?.productId?.productName}
+                          className="w-20 h-20 object-cover rounded-md border border-gray-100 shrink-0"
                         />
-                        <div className="flex-1 min-w-0">
-                          <h1 className="font-semibold truncate text-lg">
+                        <div className="flex flex-col min-w-0 gap-1.5">
+                          <h1 className="font-semibold truncate text-lg text-gray-900">
                             {product?.productId?.productName}
                           </h1>
-                          <p className="text-muted-foreground">₹{product?.productId?.productPrice?.toLocaleString("en-IN")}</p>
+                          <p className="text-sm text-muted-foreground">
+                            Category: {product?.productId?.category}
+                          </p>
+                          <p className="text-sm font-medium text-gray-900 md:hidden">
+                             ₹{product?.productId?.productPrice?.toLocaleString("en-IN")}
+                          </p>
                         </div>
                       </div>
-                      <div className="flex w-full sm:w-auto justify-between sm:justify-end items-center gap-6">
-                        <div className="flex items-center gap-2">
+
+                      {/* Actions: Price, Quantity, Remove */}
+                      <div className="flex w-full md:w-auto justify-between md:justify-end items-center gap-6 md:gap-8 shrink-0">
+                         <p className="font-medium text-gray-900 hidden md:block w-24 text-right">
+                             ₹{product?.productId?.productPrice?.toLocaleString("en-IN")}
+                          </p>
+
+                        <div className="flex items-center gap-3 bg-gray-50 rounded-lg p-1">
                           <Button
-                            onClick={() =>
-                              handleUpdateQuantity(
-                                product.productId._id,
-                                "decrease"
-                              )
-                            }
-                            variant="outline"
+                            onClick={() => handleUpdateQuantity(product.productId._id, "decrease")}
+                            variant="ghost"
                             size="icon"
-                            className="h-8 w-8"
+                            className="h-8 w-8 hover:bg-white shadow-sm"
+                            disabled={product.quantity <= 1}
                           >
                             -
                           </Button>
-                          <span className="w-8 text-center">{product.quantity}</span>
+                          <span className="w-8 text-center font-medium text-sm">{product.quantity}</span>
                           <Button
-                            onClick={() =>
-                              handleUpdateQuantity(
-                                product.productId._id,
-                                "increase"
-                              )
-                            }
-                            variant="outline"
+                            onClick={() => handleUpdateQuantity(product.productId._id, "increase")}
+                            variant="ghost"
                             size="icon"
-                            className="h-8 w-8"
+                            className="h-8 w-8 hover:bg-white shadow-sm"
                           >
                             +
                           </Button>
                         </div>
-                        <div className="text-right min-w-[80px]">
-                            <p className="font-bold">
+                        
+                        <div className="text-right w-24 hidden md:block">
+                            <p className="font-bold text-lg text-gray-900">
                                 ₹{(product?.productId?.productPrice * product?.quantity).toLocaleString("en-IN")}
                             </p>
                         </div>
+
+                        {/* Mobile Total Price (Visible only on mobile) */}
+                         <div className="md:hidden">
+                            <p className="font-bold text-lg text-gray-900">
+                                ₹{(product?.productId?.productPrice * product?.quantity).toLocaleString("en-IN")}
+                            </p>
+                        </div>
+
                         <button
                             onClick={() => handleRemove(product?.productId?._id)}
-                            className="text-red-500 hover:text-red-700 transition-colors p-2"
+                            className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-full transition-all"
                             aria-label="Remove item"
                         >
                             <Trash2 className="w-5 h-5" />
