@@ -29,21 +29,21 @@ const ProductDesc = ({ product }) => {
   };
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="font-bold text-4xl text-gray-800">
+      <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl text-gray-800">
         {product.productName}
       </h1>
-      <p className="text-gray-800">
+      <p className="text-gray-800 font-medium">
         {product.category} | {product.brand}
       </p>
-      <h2 className="text-pink-500 font-bold text-2xl">
+      <h2 className="text-pink-500 font-bold text-2xl md:text-3xl">
         ₹{product.productPrice}
       </h2>
-      <p className="line-clamp-12 text-muted-foreground">
+      <p className="line-clamp-12 text-muted-foreground text-sm md:text-base leading-relaxed">
         {product.productDesc}
       </p>
-      <div className="flex gap-2 items-center w-300px">
-        <p className="text-gray-800 font-semibold">Quantity :</p>
-        <Input type="number" className="w-14" defaultValue={1} />
+      <div className="flex gap-4 items-center">
+        <p className="text-gray-800 font-semibold text-lg">Quantity :</p>
+        <Input type="number" className="w-20" defaultValue={1} />
       </div>
       <Button
         onClick={() => dispatch(addToCart(product._id))}

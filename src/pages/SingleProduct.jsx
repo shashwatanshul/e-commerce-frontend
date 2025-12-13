@@ -13,9 +13,9 @@ const SingleProduct = () => {
     const {products} = useSelector(store=>store.product)
     const product = products.find((item)=> item._id === productId)
   return (
-    <div className='pt-20 py-10 max-w-7xl mx-auto'>
+    <div className='pt-20 py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
       <Breadcrums product={product}/>
-      <div className='mt-10 grid grid-cols-2 items-start'>
+      <div className='mt-10 grid grid-cols-1 md:grid-cols-2 items-start gap-10'>
          <ProductImg images={product.productImg}/>
          <ProductDesc product={product}/>
       </div>
