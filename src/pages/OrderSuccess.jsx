@@ -32,12 +32,12 @@ const OrderSuccess = () => {
             Continue Shopping
           </button>
 
-          <button
+          {/* <button
             onClick={() => navigate("/orders")}
             className="w-full border border-pink-600 text-pink-600 py-3 rounded-xl hover:bg-pink-50 transition"
           >
             View My Orders
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
