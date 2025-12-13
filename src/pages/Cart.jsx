@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { setCart } from "@/redux/productSlice";
-import { ShoppingCart, Trash2 } from "lucide-react";
+import { ShoppingCart, Trash2, ArrowLeft } from "lucide-react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -76,6 +76,13 @@ const Cart = () => {
     <div className="pt-20 bg-gray-50 min-h-screen">
       {cart?.items?.length > 0 ? (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+          <Button 
+            variant="ghost" 
+            className="mb-4 pl-0 hover:bg-transparent hover:text-pink-600 font-medium"
+            onClick={() => navigate('/products')}
+          >
+            <ArrowLeft className="mr-2 h-5 w-5" /> Back to Products
+          </Button>
           <h1 className="text-2xl font-bold text-gray-800 mb-7">
             Shopping Cart
           </h1>
