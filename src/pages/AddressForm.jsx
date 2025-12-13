@@ -14,6 +14,7 @@ import {
   setSelectedAddress,
 } from "@/redux/productSlice";
 import axios from "axios";
+import { ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
 
 const AddressForm = () => {
@@ -238,7 +239,15 @@ const AddressForm = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {/* <Stepper currentStep={1} /> Step 2: Address */}
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 items-start gap-10 lg:gap-20 mt-10">
+      <Button
+        variant="ghost"
+        className="mb-4 pl-0 hover:bg-transparent hover:text-pink-600 font-medium"
+        onClick={() => navigate("/cart")}
+      >
+        <ArrowLeft className="mr-2 h-5 w-5" /> Back to Cart
+      </Button>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 items-start gap-10 lg:gap-20 mt-6">
         {/* LEFT SIDE */}
         <div className="space-y-4 p-6 bg-white w-full">
           {showForm ? (
