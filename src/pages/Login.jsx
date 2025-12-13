@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { setUser } from "@/redux/userSlice"
 import axios from "axios"
-import { Eye, EyeOff, Loader2 } from "lucide-react"
+import { Eye, EyeOff, Loader2, ArrowLeft } from "lucide-react"
 import React, { useState } from 'react'
 import { useDispatch } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
@@ -59,7 +59,14 @@ const Login = () => {
     }
 
     return (
-        <div className="flex justify-center items-center h-screen bg-pink-100">
+        <div className="flex justify-center items-center h-screen bg-pink-100 relative">
+            <Button 
+                variant="ghost" 
+                className="absolute top-4 left-4 text-gray-700 hover:text-pink-600 font-medium"
+                onClick={() => navigate('/products')}
+            >
+                <ArrowLeft className="mr-2 h-5 w-5" /> Back
+            </Button>
             <Card className="w-full max-w-sm">
                 <CardHeader>
                     <CardTitle>Login to your account</CardTitle>
