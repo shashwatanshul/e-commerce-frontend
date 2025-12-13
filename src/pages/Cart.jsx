@@ -81,7 +81,7 @@ const Cart = () => {
             className="mb-4 hover:bg-transparent hover:text-pink-600 font-medium"
             onClick={() => navigate('/products')}
           >
-            <ArrowLeft className="mr-2 h-5 w-5" /> Back to Products
+            <ArrowLeft className="h-5 w-5" /> Back to Products
           </Button>
           <h1 className="text-2xl font-bold text-gray-800 mb-7">
             Shopping Cart
