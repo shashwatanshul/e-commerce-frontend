@@ -425,7 +425,7 @@ const Navbar = () => {
   const cartCount = cart?.items?.length || 0;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-20 border-b border-pink-200 bg-pink-50/90 backdrop-blur">
+    <header className="fixed inset-x-0 top-0 z-20 border-b border-pink-200 bg-pink-50/90 backdrop-blur pr-[var(--removed-body-scroll-bar-size,0px)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top bar */}
         <div className="flex items-center justify-between py-3">
