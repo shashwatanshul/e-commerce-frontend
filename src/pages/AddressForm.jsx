@@ -235,12 +235,12 @@ const AddressForm = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto grid place-items-center p-10">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {/* <Stepper currentStep={1} /> Step 2: Address */}
 
-      <div className="grid grid-cols-2 items-start gap-20 mt-10 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 items-start gap-10 lg:gap-20 mt-10">
         {/* LEFT SIDE */}
-        <div className="space-y-4 p-6 bg-white">
+        <div className="space-y-4 p-6 bg-white w-full">
           {showForm ? (
             // Address Input Form
             <>
@@ -289,7 +289,7 @@ const AddressForm = () => {
                   onChange={handleChange}
                 />
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="city">City</Label>
                   <Input
@@ -313,7 +313,7 @@ const AddressForm = () => {
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="zip">Zip Code</Label>
                   <Input
@@ -337,9 +337,11 @@ const AddressForm = () => {
                   />
                 </div>
               </div>
-              <Button onClick={handleSave} className="w-full">
-                Save & Continue
-              </Button>
+              <div className="pt-4">
+                <Button onClick={handleSave} className="w-full bg-pink-600 hover:bg-pink-700">
+                  Save & Continue
+                </Button>
+              </div>
             </>
           ) : (
             // Saved Addresses List
@@ -348,10 +350,10 @@ const AddressForm = () => {
               {addresses.map((addr, index) => (
                 <div
                   key={index}
-                  className={`border p-4 rounded-md cursor-pointer relative ${
+                  className={`border p-4 rounded-md cursor-pointer relative transition-colors ${
                     selectedAddress === index
                       ? "border-pink-600 bg-pink-50"
-                      : "border-gray-300"
+                      : "border-gray-300 hover:border-gray-400"
                   }`}
                   onClick={() => dispatch(setSelectedAddress(index))}
                 >
@@ -369,7 +371,7 @@ const AddressForm = () => {
                       e.stopPropagation(); // Prevent selecting when deleting
                       dispatch(deleteAddress(index));
                     }}
-                    className="absolute top-2 right-2 text-red-500 hover:text-red-700 text-sm"
+                    className="absolute top-2 right-2 text-red-500 hover:text-red-700 text-sm font-medium z-10 p-1"
                   >
                     Delete
                   </button>
@@ -387,7 +389,7 @@ const AddressForm = () => {
               <Button
                 disabled={selectedAddress === null}
                 onClick={handlePayment}
-                className="w-full bg-pink-600"
+                className="w-full bg-pink-600 hover:bg-pink-700 mt-4"
               >
                 Proceed To Checkout
               </Button>
@@ -396,14 +398,14 @@ const AddressForm = () => {
         </div>
 
         {/* RIGHT SIDE (Order Summary) */}
-        <div>
-          <Card className="w-[400px]">
+        <div className="w-full flex justify-center lg:justify-start">
+          <Card className="w-full max-w-[400px] shadow-md">
             <CardHeader>
               <CardTitle>Order Summary</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex justify-between">
-                <span>Subtotal ({cart.length} items)</span>
+                <span>Subtotal ({cart?.length || 0} items)</span>
                 <span>₹{subtotal.toLocaleString("en-IN")}</span>
               </div>
               <div className="flex justify-between">
