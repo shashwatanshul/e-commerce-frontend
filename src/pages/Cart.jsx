@@ -78,7 +78,7 @@ const Cart = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
           <Button 
             variant="ghost" 
-            className="mb-4 hover:bg-transparent hover:text-pink-600 font-medium"
+            className="mb-4 px-0 hover:bg-transparent hover:text-pink-600 font-medium"
             onClick={() => navigate('/products')}
           >
             <ArrowLeft className="h-5 w-5" /> Back to Products
