@@ -1,33 +1,45 @@
-import { ChartColumnBig, FolderPlus, LayoutDashboard, PackagePlus, PackageSearch, SquareUser, Users } from 'lucide-react'
-import { LiaCommentSolid } from "react-icons/lia";
+import { LayoutDashboard, PackagePlus, PackageSearch, Users, X } from 'lucide-react'
+import { FaRegEdit } from 'react-icons/fa';
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { FaEdit, FaRegEdit } from 'react-icons/fa';
+import { Button } from './ui/button';
 
-const Sidebar = () => {
+const Sidebar = ({ className, onClose }) => {
+  const navItems = [
+    { to: '/dashboard/sales', icon: <LayoutDashboard />, label: 'Dashboard' },
+    { to: '/dashboard/add-product', icon: <PackagePlus />, label: 'Add Product' },
+    { to: '/dashboard/products', icon: <PackageSearch />, label: 'Products' },
+    { to: '/dashboard/users', icon: <Users />, label: 'Users' },
+    { to: '/dashboard/orders', icon: <FaRegEdit />, label: 'Orders' },
+  ];
+
   return (
-    <div className='hidden  fixed md:block border-r dark:bg-gray-800 bg-pink-50 border-pink-200 z-10 w-[300px] p-10 space-y-2 h-screen '>
-      <div className='text-center pt-10 px-3 space-y-2'>
-        <NavLink to='/dashboard/sales' className={({ isActive }) => `text-xl  ${isActive ? "bg-pink-600 dark:bg-gray-900 text-gray-200" : "bg-transparent"} flex items-center gap-2 font-bold cursor-pointer p-3 rounded-2xl w-ful`}>
-          <LayoutDashboard/>
-          <span>Dashboard</span>
-        </NavLink>
-        <NavLink to='/dashboard/add-product' className={({ isActive }) => `text-xl  ${isActive ? "bg-pink-600 dark:bg-gray-900 text-gray-200" : "bg-transparent"} flex items-center gap-2 font-bold cursor-pointer p-3 rounded-2xl w-ful`}>
-          <PackagePlus/>
-          <span>Add Product</span>
-        </NavLink>
-        <NavLink to='/dashboard/products' className={({ isActive }) => `text-xl  ${isActive ? "bg-pink-600 dark:bg-gray-900 text-gray-200" : "bg-transparent"} flex items-center gap-2 font-bold cursor-pointer p-3 rounded-2xl w-ful`}>
-          <PackageSearch/>
-          <span>Products</span>
-        </NavLink>
-        <NavLink to='/dashboard/users' className={({ isActive }) => `text-xl  ${isActive ? "bg-pink-600 dark:bg-gray-900 text-gray-200" : "bg-transparent"} flex items-center gap-2 font-bold cursor-pointer p-3 rounded-2xl w-ful`}>
-          <Users/>
-          <span>Users</span>
-        </NavLink>
-        <NavLink to='/dashboard/orders' className={({ isActive }) => `text-xl  ${isActive ? "bg-pink-600 dark:bg-gray-900 text-gray-200" : "bg-transparent"} flex items-center gap-2 font-bold cursor-pointer p-3 rounded-2xl w-ful`}>
-          <FaRegEdit/>
-          <span>Orders</span>
-        </NavLink>
+    <div className={`flex flex-col h-full bg-pink-50 dark:bg-gray-800 border-r border-pink-200 ${className}`}>
+        {/* Mobile Close Button */}
+        <div className="md:hidden flex justify-end p-4">
+            <Button variant="ghost" size="icon" onClick={onClose}>
+                <X className="h-5 w-5" />
+            </Button>
+        </div>
+
+      <div className='flex-1 py-6 px-4 space-y-2 overflow-y-auto'>
+        {navItems.map((item) => (
+            <NavLink 
+                key={item.to}
+                to={item.to} 
+                onClick={onClose}
+                className={({ isActive }) => `
+                    flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all
+                    ${isActive 
+                        ? "bg-pink-600 dark:bg-gray-900 text-white shadow-md" 
+                        : "hover:bg-pink-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
+                    }
+                `}
+            >
+            {item.icon}
+            <span>{item.label}</span>
+            </NavLink>
+        ))}
       </div>
     </div>
   )
