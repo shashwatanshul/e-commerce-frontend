@@ -75,73 +75,81 @@ const Cart = () => {
   return (
     <div className="pt-20 bg-gray-50 min-h-screen">
       {cart?.items?.length > 0 ? (
-        <div className="max-w-7xl mx-auto ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
           <h1 className="text-2xl font-bold text-gray-800 mb-7">
             Shopping Cart
           </h1>
-          <div className="max-w-7xl mx-auto flex gap-7">
+          <div className="flex flex-col lg:flex-row gap-7">
             <div className="flex flex-col gap-5 flex-1">
               {cart?.items?.map((product, index) => {
                 return (
                   <Card key={index} className="">
-                    <div className="flex justify-between  items-center pr-7">
-                      <div className="flex items-center w-[350px]">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 p-4">
+                      <div className="flex items-center gap-4 w-full sm:w-auto">
                         <img
                           src={
                             product?.productId?.productImg?.[0]?.url || userLogo
                           }
                           alt=""
-                          className="w-25 h-25"
+                          className="w-20 h-20 object-cover rounded-md"
                         />
-                        <div className="w-[280px]">
-                          <h1 className="font-semibold truncate">
+                        <div className="flex-1 min-w-0">
+                          <h1 className="font-semibold truncate text-lg">
                             {product?.productId?.productName}
                           </h1>
-                          <p>₹{product?.productId?.productPrice}</p>
+                          <p className="text-muted-foreground">₹{product?.productId?.productPrice?.toLocaleString("en-IN")}</p>
                         </div>
                       </div>
-                      <div className="flex gap-5 items-center">
-                        <Button
-                          onClick={() =>
-                            handleUpdateQuantity(
-                              product.productId._id,
-                              "decrease"
-                            )
-                          }
-                          variant="outline"
+                      <div className="flex w-full sm:w-auto justify-between sm:justify-end items-center gap-6">
+                        <div className="flex items-center gap-2">
+                          <Button
+                            onClick={() =>
+                              handleUpdateQuantity(
+                                product.productId._id,
+                                "decrease"
+                              )
+                            }
+                            variant="outline"
+                            size="icon"
+                            className="h-8 w-8"
+                          >
+                            -
+                          </Button>
+                          <span className="w-8 text-center">{product.quantity}</span>
+                          <Button
+                            onClick={() =>
+                              handleUpdateQuantity(
+                                product.productId._id,
+                                "increase"
+                              )
+                            }
+                            variant="outline"
+                            size="icon"
+                            className="h-8 w-8"
+                          >
+                            +
+                          </Button>
+                        </div>
+                        <div className="text-right min-w-[80px]">
+                            <p className="font-bold">
+                                ₹{(product?.productId?.productPrice * product?.quantity).toLocaleString("en-IN")}
+                            </p>
+                        </div>
+                        <button
+                            onClick={() => handleRemove(product?.productId?._id)}
+                            className="text-red-500 hover:text-red-700 transition-colors p-2"
+                            aria-label="Remove item"
                         >
-                          -
-                        </Button>
-                        <span>{product.quantity}</span>
-                        <Button
-                          onClick={() =>
-                            handleUpdateQuantity(
-                              product.productId._id,
-                              "increase"
-                            )
-                          }
-                          variant="outline"
-                        >
-                          +
-                        </Button>
+                            <Trash2 className="w-5 h-5" />
+                        </button>
                       </div>
-                      <p className="font-semibold">
-                        ₹{product?.productId?.productPrice * product?.quantity}
-                      </p>
-                      <p
-                        onClick={() => handleRemove(product?.productId?._id)}
-                        className="flex text-red-500 items-center gap-1 cursor-pointer"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                        Remove
-                      </p>
                     </div>
                   </Card>
                 );
               })}
             </div>
             <div>
-              <Card className="w-[400px]">
+              <Card className="w-full lg:w-[400px]">
                 <CardHeader>
                   <CardTitle>Order Summary</CardTitle>
                 </CardHeader>
