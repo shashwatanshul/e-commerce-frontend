@@ -80,11 +80,11 @@ const Cart = () => {
             Shopping Cart
           </h1>
           <div className="flex flex-col lg:flex-row gap-7">
-            <div className="flex flex-col gap-5 flex-1">
+            <div className="flex flex-col gap-5 flex-1 min-w-0">
               {cart?.items?.map((product, index) => {
                 return (
                   <Card key={index}>
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 p-4">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 p-4">
                       {/* Product Image & Info */}
                       <div className="flex items-center gap-4 flex-1 min-w-0 w-full md:w-auto">
                         <img
@@ -106,12 +106,12 @@ const Cart = () => {
                       </div>
 
                       {/* Actions: Price, Quantity, Remove */}
-                      <div className="flex w-full md:w-auto justify-between md:justify-end items-center gap-6 md:gap-8 shrink-0">
-                         <p className="font-medium text-gray-900 hidden md:block w-24 text-right">
+                      <div className="flex w-full md:w-auto justify-between md:justify-end items-center gap-4 md:gap-6 lg:gap-4 xl:gap-8 shrink-0">
+                         <p className="font-medium text-gray-900 hidden md:block w-20 lg:w-auto text-right">
                              ₹{product?.productId?.productPrice?.toLocaleString("en-IN")}
                           </p>
 
-                        <div className="flex items-center gap-3 bg-gray-50 rounded-lg p-1">
+                        <div className="flex items-center gap-2 md:gap-3 bg-gray-50 rounded-lg p-1">
                           <Button
                             onClick={() => handleUpdateQuantity(product.productId._id, "decrease")}
                             variant="ghost"
@@ -132,7 +132,7 @@ const Cart = () => {
                           </Button>
                         </div>
                         
-                        <div className="text-right w-24 hidden md:block">
+                        <div className="text-right w-20 lg:w-24 hidden md:block">
                             <p className="font-bold text-lg text-gray-900">
                                 ₹{(product?.productId?.productPrice * product?.quantity).toLocaleString("en-IN")}
                             </p>
@@ -159,7 +159,7 @@ const Cart = () => {
               })}
             </div>
             <div>
-              <Card className="w-full lg:w-[400px]">
+              <Card className="w-full lg:w-[320px] xl:w-[380px]">
                 <CardHeader>
                   <CardTitle>Order Summary</CardTitle>
                 </CardHeader>
