@@ -36,7 +36,7 @@ const AdminUsers = () => {
     getAllUsers();
   }, []);
 
-  console.log(users);
+
 
   return (
     <div className="pl-[350px] py-20 pr-20  mx-auto px-4 ">

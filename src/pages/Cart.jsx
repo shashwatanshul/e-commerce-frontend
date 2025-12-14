@@ -70,7 +70,7 @@ const Cart = () => {
     loadCart();
   }, [dispatch]);
 
-  console.log(cart);
+
 
   return (
     <div className="pt-20 bg-gray-50 min-h-screen">

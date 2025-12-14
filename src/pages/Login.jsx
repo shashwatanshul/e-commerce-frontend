@@ -37,7 +37,7 @@ const Login = () => {
 
     const submitHandler = async(e) => {
         e.preventDefault()
-        console.log(formData);
+
         try {
             setLoading(true)
             const res = await axios.post(`${import.meta.env.VITE_URL}/api/v1/user/login`, formData, {
@@ -110,7 +110,7 @@ const Login = () => {
                                     required
                                 />
                                 {
-                                    showPassword ? <EyeOff onClick={() => { setShowPassword(false), console.log('clicked') }
+                                    showPassword ? <EyeOff onClick={() => { setShowPassword(false)}
                                     } className='w-5 h-5 text-gray-700 absolute right-5 bottom-2' /> :
                                         <Eye onClick={() => setShowPassword(true)} className='w-5 h-5 text-gray-700 absolute right-5 bottom-2' />
 

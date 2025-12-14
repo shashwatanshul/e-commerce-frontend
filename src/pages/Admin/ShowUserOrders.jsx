@@ -28,7 +28,7 @@ const ShowUserOrders = () => {
     getUserOrders();
   }, []);
 
-  console.log(userOrder);
+
 
   return (
     <div className="pl-[350px] py-20 pr-20 flex flex-col gap-3">
