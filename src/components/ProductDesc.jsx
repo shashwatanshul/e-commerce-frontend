@@ -46,7 +46,7 @@ const ProductDesc = ({ product }) => {
         <Input type="number" className="w-20" defaultValue={1} />
       </div>
       <Button
-        onClick={() => dispatch(addToCart(product._id))}
+        onClick={() => addToCart(product._id)}
         className="bg-pink-600 w-max"
       >
         <ShoppingCart />

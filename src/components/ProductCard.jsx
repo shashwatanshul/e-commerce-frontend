@@ -59,7 +59,7 @@ const ProductCard = ({ product, loading }) => {
           <h1 className="font-semibold line-clamp-2 h-12">{productName}</h1>
           <h2 className="font-bold">₹{productPrice}</h2>
           <Button
-            onClick={() => dispatch(addToCart(product._id))}
+            onClick={() => addToCart(product._id)}
             className="bg-pink-600 mb-3 w-full"
           >
             <ShoppingCart />
