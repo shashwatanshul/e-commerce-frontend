@@ -7,6 +7,7 @@ import { setProducts } from '@/redux/productSlice';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Loader from '@/components/Loader';
 
 const Product = () => {
   const { products } = useSelector(store => store.product);
@@ -123,13 +124,15 @@ const Product = () => {
           {/* Product Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-7">
             {loading ? (
-              <p>Loading...</p>
+              <div className="flex justify-center items-center col-span-full py-20">
+                <Loader />
+              </div>
             ) : currentProducts.length > 0 ? (
               currentProducts.map((product, index) => (
                 <ProductCard key={index} product={product} loading={loading} />
               ))
             ) : (
-              <p>No products found</p>
+              <div className="flex justify-center items-center col-span-full py-20">No Products Found</div>
             )}
           </div>
 
