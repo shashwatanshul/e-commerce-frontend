@@ -92,12 +92,12 @@ const Login = () => {
                         <div className="grid gap-2">
                             <div className="flex items-center">
                                 <Label htmlFor="password">Password</Label>
-                                <Link
+                                {/* <Link
                                     to="#"
                                     className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                                 >
                                     Forgot your password?
-                                </Link>
+                                </Link> */}
                             </div>
                             <div className='relative'>
                                 <Input
